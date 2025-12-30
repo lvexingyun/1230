@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>爹味话语练习室</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app-header">
+        <div class="app-title">
+          <span class="logo-dot"></span>
+          <span>爹味话语练习室</span>
+        </div>
+        <div class="app-actions">
+          <label class="toggle">
+            <input type="checkbox" id="safeModeToggle" checked />
+            <span class="toggle-slider"></span>
+            <span class="toggle-label">安全模式</span>
+          </label>
+          <button id="settingsButton" class="btn ghost">设置</button>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <section id="chatContainer" class="chat-container">
+          <div id="messages" class="messages"></div>
+        </section>
+
+        <section class="composer">
+          <textarea
+            id="inputText"
+            class="input"
+            rows="2"
+            placeholder="贴上一句让你觉得有点“爹味”的话，我帮你识别并一起练习回应～"
+          ></textarea>
+          <button id="sendButton" class="btn primary">发送</button>
+        </section>
+      </main>
+
+      <div id="settingsPanel" class="settings-panel hidden">
+        <div class="settings-card">
+          <div class="settings-header">
+            <h2>设置</h2>
+            <button id="closeSettingsButton" class="icon-button">&times;</button>
+          </div>
+
+          <p class="settings-tip">
+            首次使用时请完成配置。保存成功后，敏感信息将仅存入数据库，前端不再展示。
+          </p>
+
+          <form id="settingsForm" class="settings-form">
+            <div class="field-group">
+              <label for="apiBaseUrl">API 地址（Base URL）</label>
+              <input
+                id="apiBaseUrl"
+                name="apiBaseUrl"
+                type="text"
+                placeholder="https://open.bigmodel.cn/api/paas/v4/chat/completions"
+                value="https://open.bigmodel.cn/api/paas/v4/chat/completions"
+                required
+              />
+            </div>
+
+            <div class="field-group">
+              <label for="apiKey">API 密钥</label>
+              <input
+                id="apiKey"
+                name="apiKey"
+                type="password"
+                placeholder="请输入模型服务密钥"
+                required
+              />
+            </div>
+
+            <div class="field-group">
+              <label for="modelName">模型名称</label>
+              <input
+                id="modelName"
+                name="modelName"
+                type="text"
+                placeholder="glm-4.7"
+                value="glm-4.7"
+                required
+              />
+            </div>
+
+            <div class="field-group">
+              <label for="supabaseUrl">Supabase Project URL</label>
+              <input
+                id="supabaseUrl"
+                name="supabaseUrl"
+                type="text"
+                placeholder="https://dlwuhrtdhumnfxridslv.supabase.co"
+                value="https://dlwuhrtdhumnfxridslv.supabase.co"
+              />
+            </div>
+
+            <div class="field-group">
+              <label for="supabaseKey">Supabase Publishable Key</label>
+              <input
+                id="supabaseKey"
+                name="supabaseKey"
+                type="password"
+                placeholder="前端可用的 anon/public key"
+                value="sb_publishable_P9BdrnTP_aPE3IcCLBqXgQ_OpUiVZTV"
+              />
+            </div>
+
+            <button type="submit" class="btn primary full-width">
+              保存配置
+            </button>
+          </form>
+
+          <div id="settingsStatus" class="settings-status"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
+
+
